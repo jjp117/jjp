@@ -3,7 +3,7 @@
   <span style="margin:0 10px;color:#24292f">简体中文</span>
 </h4>
 <p align="center">
-<img src="./1.png" width="300"/>
+<img src="https://jjp-c3e.pages.dev/1.png" width="300"/>
 </p>
 <h1 align="center">JJP｜自研私有加密容器规范</h1>
 <p align="center">
@@ -23,11 +23,11 @@
 <br>
 <p align="center">
 <a href="https://jjp-c3e.pages.dev/" target="_blank">
-<img src="https://img.shields.io/badge/🔗立即访问‑JJP网页-2563eb?style=for-the-badge&logo=googlechrome&logoColor=white" width="320" alt="打开JJP网页">
+<img src="https://img.shields.io/badge/🔗立即访问‑JJP网页-2563eb?style=for-the-badge&logo=https://jjp-c3e.pages.dev/1.png&logoColor=white" width="320" alt="打开JJP网页">
 </a>
 &nbsp;&nbsp;
 <a href="https://github.com/jjp117/jjp/releases" target="_blank">
-<img src="https://img.shields.io/badge/📥下载‑桌面安装包‑2ea44f?style=for-the-badge&logo=windows&logoColor=white" width="320" alt="下载客户端">
+<img src="https://img.shields.io/badge/📥下载发行版-red?style=for-the-badge&logo=github&logoColor=white" width="320" alt="下载发行版">
 </a>
 </p>
 
@@ -76,4 +76,3 @@ JJP项目主力交付形态为静态网页版；也可使用PakePlus打包为本
 
 ## 许可
 本项目以 MIT 许可证开源。
-
