@@ -38,41 +38,45 @@ JJP is a private container format. It packages arbitrary files into one single f
 ## Design Goal
 JJP is designed for non-technical users: simple, zero-dependency file packaging and encryption. No software installation, no environment setup, no command line required. You only need a web browser to encrypt or decrypt files.
 
-## How it works
-All encryption and decryption run locally in your browser, powered by Web Crypto API. No backend server, no data upload, no network requests during processing.
+## Working Principle
+All encryption and decryption operations run locally in your browser, powered by the Web Crypto API. There is no backend server, no data upload, and no extra network requests during processing.
 
-## Encryption Details
-Algorithm: AES-256-GCM. Key derived by PBKDF2-HMAC-SHA256, 100,000 iterations. A unique random salt and IV will be generated every encryption.
+## Encryption Specification
+Algorithm: AES-256-GCM.
+The encryption key is derived using PBKDF2-HMAC-SHA256 with 100,000 iterations.
+A unique random salt and initialization vector (IV) will be generated for every encryption task.
 
 ## Integrity Verification
-AES-GCM comes with authentication tag. If file is tampered, corrupted, or wrong password provided, decryption fails directly without leaking broken data.
+AES-GCM includes an authentication tag. If the file is tampered, corrupted, or an incorrect password is supplied, decryption will fail directly and will not output damaged data.
 
 ## Format Features
-JJP is a custom private container format defined by the author. Full specification documents are included in this repository. It is NOT a public standard. Mainstream software cannot natively parse `.jjp` files. Only this project can encrypt/decrypt JJP containers.
+JJP is a custom private container format defined by the author. Full specification documents are stored in this repository. It is NOT an international public standard. Mainstream software cannot natively parse `.jjp` files. Only this project supports JJP container encryption and decryption.
 
 ## Usage
-Open the web page. Drag files into the page, input password to create `.jjp` container. Drag `.jjp` file in and enter the same password to restore original file. No install, no register, no internet required.
-> Web Page: https://jjp-c3e.pages.dev/
+Open the web page to start. Drag files into the page and enter your password to generate a `.jjp` container. Drag the `.jjp` container into the page and input the same password to restore the original file. No installation, no registration, and internet access is not required.
+> Web Address: https://jjp-c3e.pages.dev/
 
 ## ⚠️ Browser Compatibility Notice
-Requires Web Crypto API. Old browsers (Safari 11 on macOS 10.13 High Sierra) have incomplete WebCrypto implementation and may fail on large files. Recommended: Chrome / Firefox. You may also use desktop client packaged by PakePlus v0.2.13.
+Requires Web Crypto API. Old browsers (Safari 11 on macOS 10.13 High Sierra) have incomplete WebCrypto implementation and may fail while processing large files. Recommended browsers: Chrome / Firefox. You can also use desktop clients packaged by PakePlus v0.2.13.
 
 ## Security Statement
-JJP provides standard symmetric encryption to prevent casual inspection of your files. It is NOT enterprise-grade or military-grade encryption. Do NOT use it for corporate secrets, government, financial or high-value confidential data.
+JJP provides standard symmetric encryption to prevent casual inspection of your files. It is NOT enterprise-grade or military-grade encryption. Do NOT use it for corporate secrets, government data, financial records or other high-value confidential information.
 
-## Password
-JJP never saves your password. There is no password recovery method. If you lose your password, your JJP file cannot be decrypted. Keep your password safe, and avoid sending password and encrypted file together.
+## Password Management
+JJP never stores your password. There is no password recovery mechanism. If you lose your password, the JJP file cannot be decrypted. Please keep your password safe, and avoid sending the password and encrypted file through the same channel.
 
-## Suitable Use Cases
+## Applicable Scenarios
 Personal file packaging, small-scale file sharing, basic privacy protection for non-highly-sensitive content.
 
 ## Known Limitations
-- Large files may hit memory limits on old browsers
-- AES-GCM has maximum data size limit in single encryption
-- The whole `.jjp` file needs to be fully loaded for decryption; random streaming read is unsupported
+- Large files may trigger memory limits on older browsers
+- AES-GCM has a maximum single-encryption data size limit
+- The entire `.jjp` file must be fully loaded before decryption; streaming random access is not supported
 
-## About Open Source
-The main delivery is static web page. Desktop builds can be packed with PakePlus. No native CLI version. Web source code is open; press F12 in browser to view implementation.
+## Open Source Information
+The primary release form is a static web page. Desktop clients can be packaged with PakePlus. There is no native CLI version. The web frontend is open-source; press F12 in your browser to view the source code and implementation.
 
 ## License
+This project is released under the MIT License.
+
 This project is open-source under MIT License.
