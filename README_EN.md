@@ -1,18 +1,14 @@
 <h4 align="right">
-  <a href="./README.md">简体中文</a>
   <span style="margin:0 10px;color:#24292f">English</span>
+  <a href="./README.md">简体中文</a>
 </h4>
-
 <p align="center">
-<img src="https://123-a2r.pages.dev/1.png" width="300"/>
+<img src="https://jjp-c3e.pages.dev/1.png" width="300"/>
 </p>
-
-<h1 align="center">JJP｜Proprietary Encrypted Container Specification</h1>
-
+<h1 align="center">JJP · Self-developed Private Encryption Container Specification</h1>
 <p align="center">
-Implemented as static web page. All computations run locally inside browser sandbox. No user files are uploaded to remote servers.
+Built as static web page. All calculations run locally inside browser sandbox. No user files will be uploaded to remote servers.
 </p>
-
 <p align="center">
 <a href="https://github.com/jjp117/jjp/releases">
 <img src="https://img.shields.io/github/v/release/jjp117/jjp?style=flat-square&logo=github" alt="Release">
@@ -24,54 +20,59 @@ Implemented as static web page. All computations run locally inside browser sand
 <img src="https://img.shields.io/github/license/jjp117/jjp?style=flat-square&logo=github" alt="License">
 </a>
 </p>
-
 <br>
-
 <p align="center">
-<a href="https://123-a2r.pages.dev/" target="_blank">
-<img src="https://img.shields.io/badge/🔗Open‑JJP_Web‑2563eb?style=for‑the‑badge&logo=googlechrome&logoColor=white" width="320" alt="Open JJP Web">
+<a href="https://jjp-c3e.pages.dev/" target="_blank">
+<img src="https://img.shields.io/badge/🔗Open-JJP_Web-2563eb?style=for-the-badge&logo=https://jjp-c3e.pages.dev/1.png&logoColor=white" width="320" alt="Open JJP Web">
 </a>
 &nbsp;&nbsp;
 <a href="https://github.com/jjp117/jjp/releases" target="_blank">
-<img src="https://img.shields.io/badge/📥Download‑Desktop_Build‑2ea44f?style=for‑the‑badge&logo=windows&logoColor=white" width="320" alt="Download Client">
+<img src="https://img.shields.io/badge/📥Download-Releases-red?style=for-the-badge&logo=github&logoColor=white" width="320" alt="Download Releases">
 </a>
 </p>
 
 # JJP
-## What is this
-JJP is a proprietary container format designed to encapsulate arbitrary files into a single unified file, and to apply AES‑GCM symmetric encryption to the file content. The password is never stored in the generated file in any form. The decryption key is derived from the user's password via PBKDF2.
+## What is JJP
+JJP is a private container format. It packages arbitrary files into one single file, and encrypts content with AES-GCM symmetric encryption. Passwords are never stored inside JJP files. The decryption key is derived from your password via PBKDF2.
 
-## Design goal
-The design goal of JJP is to provide a simple, direct, and zero‑dependency file encapsulation and encryption method for non‑professional users. Users do not need to install any software, configure any runtime environment, or master the command line. Encryption and decryption can be completed entirely within a browser.
+## Design Goal
+JJP is designed for non-technical users: simple, zero-dependency file packaging and encryption. No software installation, no environment setup, no command line required. You only need a web browser to encrypt or decrypt files.
 
-## How it runs
-JJP runs entirely locally in the browser. All encryption and decryption operations are performed through the browser's built‑in Web Crypto API. It does not rely on any backend service, does not upload any data, and does not generate any network requests.
+## How it works
+All encryption and decryption run locally in your browser, powered by Web Crypto API. No backend server, no data upload, no network requests during processing.
 
-## Encryption
-JJP uses AES‑GCM as the encryption algorithm, with a key length of 256 bits. The key is derived from the user's password via PBKDF2, with 100,000 iterations and SHA‑256 as the hash algorithm. A new random salt and initialization vector are generated for every encryption.
+## Encryption Details
+Algorithm: AES-256-GCM. Key derived by PBKDF2-HMAC-SHA256, 100,000 iterations. A unique random salt and IV will be generated every encryption.
 
-## Integrity verification
-AES‑GCM includes an authentication tag, which can verify whether the data has been tampered with during decryption. If the file has been modified, corrupted, or the password is incorrect, the decryption process will fail immediately and return an error message, without outputting any incorrect content.
+## Integrity Verification
+AES-GCM comes with authentication tag. If file is tampered, corrupted, or wrong password provided, decryption fails directly without leaking broken data.
 
-## Format characteristics
-JJP is a proprietary format. The file structure is defined by the author of this project, and the complete specification is not publicly disclosed. Since the format is not included in any public standard and is not compatible with any existing software, external tools cannot directly identify, parse, or open JJP files.
+## Format Features
+JJP is a custom private container format defined by the author. Full specification documents are included in this repository. It is NOT a public standard. Mainstream software cannot natively parse `.jjp` files. Only this project can encrypt/decrypt JJP containers.
 
 ## Usage
-Open the web version and use it directly. Users drag a file into the page and enter a password to generate a JJP file. To restore the original file, drag the JJP file into the page and enter the same password. The entire process requires no installation, no registration, and no internet connection.
+Open the web page. Drag files into the page, input password to create `.jjp` container. Drag `.jjp` file in and enter the same password to restore original file. No install, no register, no internet required.
+> Web Page: https://jjp-c3e.pages.dev/
 
-> Web version: https://123‑a2r.pages.dev/
+## ⚠️ Browser Compatibility Notice
+Requires Web Crypto API. Old browsers (Safari 11 on macOS 10.13 High Sierra) have incomplete WebCrypto implementation and may fail on large files. Recommended: Chrome / Firefox. You may also use desktop client packaged by PakePlus v0.2.13.
 
-## Security note
-JJP provides symmetric encryption of conventional strength, which can effectively prevent files from being casually viewed. However, JJP is not a commercial‑grade or military‑grade encryption solution. It is not suitable for protecting corporate secrets, government data, financial information, or other high‑value sensitive content.
+## Security Statement
+JJP provides standard symmetric encryption to prevent casual inspection of your files. It is NOT enterprise-grade or military-grade encryption. Do NOT use it for corporate secrets, government, financial or high-value confidential data.
 
-## Password management
-JJP does not store passwords and does not provide password recovery. Once the password is lost, the file cannot be decrypted. Users are advised to keep their passwords safe and avoid sending the password and the encrypted file through the same channel.
+## Password
+JJP never saves your password. There is no password recovery method. If you lose your password, your JJP file cannot be decrypted. Keep your password safe, and avoid sending password and encrypted file together.
 
-## Use cases
-JJP is suitable for personal file encapsulation, small‑scale file sharing, content protection in informal settings, and any encryption needs that do not involve high‑value sensitive information.
+## Suitable Use Cases
+Personal file packaging, small-scale file sharing, basic privacy protection for non-highly-sensitive content.
 
-## Open source note
-The web version of JJP is publicly accessible. Anyone can press F12 in the browser to view the page source code and understand its implementation. The project does not provide standalone distribution files or a command‑line version. All functionality is delivered in the form of a web page.
+## Known Limitations
+- Large files may hit memory limits on old browsers
+- AES-GCM has maximum data size limit in single encryption
+- The whole `.jjp` file needs to be fully loaded for decryption; random streaming read is unsupported
+
+## About Open Source
+The main delivery is static web page. Desktop builds can be packed with PakePlus. No native CLI version. Web source code is open; press F12 in browser to view implementation.
 
 ## License
-This project is open‑sourced under the MIT License.
+This project is open-source under MIT License.
