@@ -2,17 +2,13 @@
   <a href="./README_EN.md">English</a>
   <span style="margin:0 10px;color:#24292f">简体中文</span>
 </h4>
-
 <p align="center">
-<img src="https://123-a2r.pages.dev/1.png" width="300"/>
+<img src="./1.png" width="300"/>
 </p>
-
 <h1 align="center">JJP｜自研私有加密容器规范</h1>
-
 <p align="center">
 静态网页实现，全部运算在浏览器本地沙箱内执行，用户文件不会上传至任何远端服务器。
 </p>
-
 <p align="center">
 <a href="https://github.com/jjp117/jjp/releases">
 <img src="https://img.shields.io/github/v/release/jjp117/jjp?style=flat-square&logo=github" alt="Release">
@@ -24,16 +20,14 @@
 <img src="https://img.shields.io/github/license/jjp117/jjp?style=flat-square&logo=github" alt="License">
 </a>
 </p>
-
 <br>
-
 <p align="center">
-<a href="[https://jjp-c3e.pages.dev/]" target="_blank">
-<img src="[https://jjp-c3e.pages.dev/]🔗立即访问‑JJP网页版‑2563eb?style=for‑the‑badge&logo=googlechrome&logoColor=white" width="320" alt="打开JJP网页">
+<a href="https://jjp-c3e.pages.dev/" target="_blank">
+<img src="https://img.shields.io/badge/🔗立即访问‑JJP网页-2563eb?style=for-the-badge&logo=googlechrome&logoColor=white" width="320" alt="打开JJP网页">
 </a>
 &nbsp;&nbsp;
 <a href="https://github.com/jjp117/jjp/releases" target="_blank">
-<img src="https://img.shields.io/badge/📥下载‑桌面安装包‑2ea44f?style=for‑the‑badge&logo=windows&logoColor=white" width="320" alt="下载客户端">
+<img src="https://img.shields.io/badge/📥下载‑桌面安装包‑2ea44f?style=for-the-badge&logo=windows&logoColor=white" width="320" alt="下载客户端">
 </a>
 </p>
 
@@ -54,12 +48,14 @@ JJP 使用 AES‑GCM 作为加密算法，密钥长度为 256 位。密钥由用
 AES‑GCM 自带认证标签，可在解密时校验数据是否被篡改。若文件被修改、损坏，或密码错误，解密过程将直接失败并返回错误提示，不会输出任何错误内容。
 
 ## 格式特性
-JJP 是一种私有格式。文件结构由本项目的作者自行定义，未公开完整规范。由于该格式未被任何公开标准收录，也不被任何现有软件兼容，因此外部工具无法直接识别、解析或打开 JJP 文件。
+JJP 为项目自定义私有容器格式，文件结构由作者自行定义，项目仓库附带完整规范文档。它不属于国际通用标准，主流软件无法原生解析`.jjp`文件，只能使用本项目工具进行加解密。
 
 ## 使用方式
 打开网页版即可使用。用户将文件拖入页面，输入密码，即可生成 JJP 文件；将 JJP 文件拖入页面，输入相同密码，即可还原原始文件。整个过程无需安装、无需注册、无需联网。
+> 网页版：https://jjp-c3e.pages.dev/
 
-> 网页版：https://123‑a2r.pages.dev/
+## ⚠️ 浏览器兼容提示
+依赖 Web Crypto API。老旧浏览器（macOS 10.13 Safari 11等）WebCrypto实现存在缺陷，大文件加密会失败。推荐使用新版Chrome、Firefox，或使用PakePlus v0.2.13打包的桌面客户端。
 
 ## 安全性说明
 JJP 提供的是常规强度的对称加密，能够有效防止文件被随意查看。但 JJP 并非商业级或军事级加密方案，不适合用于保护企业机密、政府数据、金融信息或其他高价值敏感内容。
@@ -70,8 +66,14 @@ JJP 不存储密码，也不提供密码找回功能。密码一旦遗失，文�
 ## 适用场景
 JJP 适用于个人文件封装、小范围文件分享、非正式场合下的内容保护，以及任何不涉及高价值敏感信息的加密需求。
 
+## 已知限制
+- 超大文件在部分老浏览器会内存不足
+- AES-GCM单次加密数据存在长度上限
+- 解密时必须完整读取整个`.jjp`文件，不支持流式随机读取
+
 ## 开源说明
-JJP 的网页端为公开访问，任何人都可以在浏览器中按 F12 查看页面源代码，了解其实现方式。项目不提供独立的分发文件，也不提供命令行版本，所有功能均以网页形式交付。
+JJP项目主力交付形态为静态网页版；也可使用PakePlus打包为本地桌面客户端，暂无原生CLI命令行版本。网页端代码开源，任何人都可以在浏览器中按 F12 查看页面源代码，了解其实现方式。
 
 ## 许可
 本项目以 MIT 许可证开源。
+
