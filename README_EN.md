@@ -76,7 +76,3 @@ Personal file packaging, small-scale file sharing, basic privacy protection for 
 ## Open Source Information
 The primary release form is a static web page. Desktop clients can be packaged with PakePlus. There is no native CLI version. The web frontend is open-source; press F12 in your browser to view the source code and implementation.
 
-## License
-This project is released under the MIT License.
-
-This project is open-source under MIT License.
